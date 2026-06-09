@@ -9,12 +9,13 @@
   <body>
     <header>
       <div id="cabecalho">
-        <h1>UpStyle</h1>
+        <h1>Up<strong>Style</strong></h1>
       </div>
       <div id="menu">
         <nav>
           <ul>
             <li><a href="index.html">Inicio</a></li>
+            <li><a href="#destaques">Destaques</a></li>
             <li><a href="produtos.html">Produtos</a></li>
             <li><a href="carrinho.html">Carrinho</a></li>
           </ul>
@@ -22,11 +23,27 @@
       </div>
     </header>
     <div class="conteudo">
-      <!-- Conteúdo da página inicial -->
+        <h1>Bem-vindo à UpStyle!</h1>
+        <p>Descubra as últimas tendências da moda e encontre o estilo perfeito para você. Na UpStyle, oferecemos uma ampla variedade de roupas, acessórios e calçados para todos os gostos e ocasiões. Explore nossa coleção e atualize seu guarda-roupa com peças incríveis!</p>
+      <div id="destaques">
+        <h2>Produtos em Destaque</h2>
+        <div class="produtos">
+          <!-- Produtos em destaque serão exibidos aqui -->
+        </div>  
+      </div>
     </div>
     <div id="rodape">
-      <p>&copy; 2026 UpStyle. Todos os direitos reservados.</p>
+      <div class="rodape-conteudo">
+        <h1>Mande uma mensagem para nós!</h1>
+        <p>Entre em contato conosco para dúvidas, sugestões ou feedback. Estamos aqui para ajudar!</p>
+        <div class="formulario-contato">
+          <input type="text" placeholder="Seu nome" />
+          <input type="email" placeholder="Seu email" />
+          <textarea placeholder="Sua mensagem"></textarea>
+          <button>Enviar</button>
+        </div>
+      </div>
     </div>
-    <script src="../scripts/index.js"></script>
+    <script type="module" src="../scripts/main.js"></script>
   </body>
 </html>

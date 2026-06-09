@@ -1,11 +1,46 @@
 import { api } from "./api.js";
 
+const criarCardProduto = (produto) => {
+  const card = document.createElement("div");
+  card.classList.add("card");
+  card.innerHTML = `
+    <img src="${produto.image}" alt="${produto.title}" class="card-img">
+    <div class="card-body">
+      <h3 class="card-title">${produto.title}</h3>
+      <p class="card-price">R$ ${produto.price.toFixed(2)}</p>
+      <button class="card-button">Comprar</button>
+    </div>
+  `;
+  return card;
+};
+
 async function renderizarProdutos() {
   try {
-    const produtos = await api();
+    const todosProdutos = await api();
+    
+    const apenasRoupas = todosProdutos.filter(
+      (produto) =>
+        produto.category === "men's clothing" ||
+        produto.category === "women's clothing"
+    );
+
+    const produtosAleatorios = apenasRoupas
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 4);
+
+    const containerProdutos = document.querySelector(".produtos");
+    if (!containerProdutos) {
+      console.warn("Container de produtos não encontrado nesta página.");
+      return;
+    }
+
+    produtosAleatorios.forEach(produto => {
+      const card = criarCardProduto(produto);
+      containerProdutos.appendChild(card);
+    });
   } catch (error) {
     console.error("Erro ao renderizar produtos:", error);
   }
 }
 
-renderizarProdutos();
+document.addEventListener("DOMContentLoaded", renderizarProdutos);

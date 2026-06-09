@@ -6,9 +6,51 @@
 
 header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  background-color: #333;
-  color: #fff;
+  background-color: #121212;
+  color: #FFFFFF;
+  padding: 20px;
+  text-align: center;
+}
+
+strong {
+  color: #7C3AED;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: #FFFFFF;
+  transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+  color: #7C3AED;
+}
+
+body {
+  background-color: #FAFAFA;
+  color: #18181B;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.conteudo {
+  flex: 1;
+  padding: 20px;
+}
+
+#rodape {
+  background-color: #121212;
+  color: #FFFFFF;
   padding: 20px;
   text-align: center;
 }
