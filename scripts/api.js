@@ -6,5 +6,5 @@ export async function api() {
   }
 
   const dados = await resposta.json();
-  return dados; // A API retorna um array diretamente
+  return dados;
 }
