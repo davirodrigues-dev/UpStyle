@@ -101,7 +101,6 @@ body {
   margin-bottom: 0.75rem;
   line-height: 1.4;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -130,6 +129,30 @@ body {
 
 .card-button:hover {
   background-color: #333;
+}
+
+.card-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn-comprar {
+  background-color: #7C3AED;
+  color: #FFFFFF;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+} 
+
+.btn-comprar:hover {
+  background-color: #6B2D99;
 }
 
 .rodape-conteudo {

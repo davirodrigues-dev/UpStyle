@@ -23,11 +23,21 @@
     </header>
     <div class="conteudo">
       <h1>Nossos Produtos</h1>
-      <div class="produtos"></div>
+      <div class="filtro">
+        <label for="categoria">Filtrar por Categoria:</label>
+        <select id="categoria">
+          <option value="">Todas</option>
+          <option value="roupas">Masculinas</option>
+          <option value="roupas">Femininas</option>
+        </select>
+      </div>
+      <div class="produtos">
+        <!-- Os produtos serão carregados aqui via JavaScript -->
+      </div>
     </div>
     <div id="rodape">
       <p>&copy; 2026 UpStyle. Todos os direitos reservados.</p>
     </div>
-    <script type="module" src="../scripts/main.js"></script>
+    <script type="module" src="../scripts/produtos.js"></script>
   </body>
 </html>

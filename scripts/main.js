@@ -8,7 +8,10 @@ const criarCardProduto = (produto) => {
     <div class="card-body">
       <h3 class="card-title">${produto.title}</h3>
       <p class="card-price">R$ ${produto.price.toFixed(2)}</p>
-      <button class="card-button">Comprar</button>
+      <div class="card-buttons">
+        <button class="card-button">Adicionar ao Carrinho</button>
+        <button class="btn-comprar">Comprar</button>
+      </div>
     </div>
   `;
   return card;
