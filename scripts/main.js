@@ -1,21 +1,6 @@
 import { api } from "./api.js";
-
-const criarCardProduto = (produto) => {
-  const card = document.createElement("div");
-  card.classList.add("card");
-  card.innerHTML = `
-    <img src="${produto.image}" alt="${produto.title}" class="card-img">
-    <div class="card-body">
-      <h3 class="card-title">${produto.title}</h3>
-      <p class="card-price">R$ ${produto.price.toFixed(2)}</p>
-      <div class="card-buttons">
-        <button class="card-button">Adicionar ao Carrinho</button>
-        <button class="btn-comprar">Comprar</button>
-      </div>
-    </div>
-  `;
-  return card;
-};
+import { criarCardProduto } from "./utils.js";
+import { adicionarAoCarrinho } from "./carrinho.js";
 
 async function renderizarProdutos() {
   try {
@@ -39,6 +24,13 @@ async function renderizarProdutos() {
 
     produtosAleatorios.forEach(produto => {
       const card = criarCardProduto(produto);
+      
+      card.querySelector('.add-to-cart').addEventListener('click', () => adicionarAoCarrinho(produto));
+      card.querySelector('.buy-now').addEventListener('click', () => {
+          adicionarAoCarrinho(produto);
+          window.location.href = 'carrinho.html';
+      });
+
       containerProdutos.appendChild(card);
     });
   } catch (error) {

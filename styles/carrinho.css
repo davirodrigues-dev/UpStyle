@@ -1,56 +1,124 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* Estilização da página de Carrinho */
+.conteudo {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+  min-height: 60vh;
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #121212;
-  color: #FFFFFF;
-  padding: 20px;
+.carrinho-vazio {
   text-align: center;
+  padding: 80px 20px;
+  font-size: 1.4rem;
+  color: #888;
+  background: #f9f9f9;
+  border-radius: 12px;
+  border: 1px dashed #ccc;
 }
 
-strong {
-  color: #7C3AED;
-}
-
-header nav ul {
-  list-style: none;
+.lista-carrinho {
   display: flex;
+  flex-direction: column;
   gap: 20px;
 }
 
-header nav ul li a {
-  text-decoration: none;
-  color: #FFFFFF;
-  transition: color 0.3s;
-}
-
-header nav ul li a:hover {
-  color: #7C3AED;
-}
-
-body {
-  background-color: #FAFAFA;
-  color: #18181B;
-  font-family: Arial, sans-serif;
-  min-height: 100vh;
+.item-carrinho {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  gap: 25px;
+  transition: transform 0.2s;
 }
 
-.conteudo {
+.item-carrinho:hover {
+  transform: translateY(-2px);
+}
+
+.item-carrinho img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  background: #fff;
+}
+
+.detalhes-item {
   flex: 1;
-  padding: 20px;
 }
 
-#rodape {
-  background-color: #121212;
-  color: #FFFFFF;
-  padding: 20px;
-  text-align: center;
+.detalhes-item h3 {
+  font-size: 1.1rem;
+  margin: 0 0 8px 0;
+  color: #333;
+  font-weight: 600;
+}
+
+.detalhes-item p {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #111;
+}
+
+.btn-remover {
+  background: transparent;
+  border: 1px solid #e74c3c;
+  color: #e74c3c;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-remover:hover {
+  background: #e74c3c;
+  color: #fff;
+}
+
+.resumo-carrinho {
+  margin-top: 40px;
+  padding: 30px;
+  background: #f4f4f4;
+  border-radius: 12px;
+  text-align: right;
+  border: 1px solid #eee;
+}
+
+.resumo-carrinho h3 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.btn-finalizar {
+  background: #27ae60;
+  color: #fff;
+  border: none;
+  padding: 16px 45px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-finalizar:hover {
+  background: #219150;
+}
+
+/* Responsividade para celulares */
+@media (max-width: 650px) {
+  .item-carrinho {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px;
+  }
+  
+  .resumo-carrinho {
+    text-align: center;
+  }
 }
