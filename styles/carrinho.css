@@ -110,12 +110,29 @@
   background: #219150;
 }
 
-/* Responsividade para celulares */
-@media (max-width: 650px) {
+/* Ajustes para Tablets */
+@media (max-width: 1024px) {
+  .item-carrinho {
+    gap: 15px;
+    padding: 15px;
+  }
+  .item-carrinho img {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* Responsividade para celulares (Empilhamento) */
+@media (max-width: 768px) {
   .item-carrinho {
     flex-direction: column;
+    gap: 15px;
     text-align: center;
     padding: 30px;
+  }
+
+  .btn-remover, .btn-finalizar {
+    width: 100%;
   }
   
   .resumo-carrinho {

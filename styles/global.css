@@ -22,13 +22,14 @@ strong {
 
 header {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   background-color: #121212;
   color: #FFFFFF;
-  padding: 20px;
-  text-align: center;
+  padding: 20px 5%;
+  gap: 15px;
   position: fixed;
   top: 0;
   z-index: 1000;
@@ -37,13 +38,15 @@ header {
 
 header.header-scrolled {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 8px 20px;
+  padding: 8px 5%;
 }
 
 header nav ul {
   list-style: none;
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 header nav ul li a {
@@ -127,4 +130,46 @@ header nav ul li a:hover {
   margin-top: 15px;
   text-align: center;
   margin-bottom: 10px;
+}
+
+/* Responsividade Global */
+/* --- Responsividade Global --- */
+
+/* Telas Médias (Tablets - até 1024px) */
+@media (max-width: 1024px) {
+  body {
+    padding-top: 100px;
+  }
+
+  header {
+    padding: 15px 4%;
+  }
+
+  header nav ul {
+    gap: 15px;
+  }
+  
+  .auth-container {
+    margin: 60px auto;
+    max-width: 380px;
+  }
+}
+
+/* Telas Pequenas (Celulares - até 768px) */
+@media (max-width: 768px) {
+  body {
+    padding-top: 130px; /* Espaço extra para o header que vai empilhar (logo em cima, menu embaixo) */
+  }
+  
+  header {
+    padding: 15px 10px;
+    justify-content: center; /* Centraliza logo e menu quando empilhados */
+    gap: 10px;
+  }
+
+  .auth-container {
+    width: 95%; /* Ocupa quase a tela toda em celulares */
+    margin: 30px auto;
+    padding: 20px;
+  }
 }

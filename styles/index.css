@@ -57,12 +57,30 @@
 }
 
 .formulario-contato {
-  max-width: 600px;
+  width: 100%;
+  max-width: 500px;
   margin: 0 auto;
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+/* Telas Médias (Tablets) */
+@media (max-width: 1024px) {
+  .banner {
+    padding: 60px 20px;
+  }
+  .banner h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner h1 { font-size: 1.8rem; }
+  .banner p { font-size: 1rem; }
+  .rodape-conteudo h1 { font-size: 1.5rem; }
+  .formulario-contato { padding: 10px; }
 }
 
 .formulario-contato input,
