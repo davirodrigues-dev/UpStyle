@@ -1,3 +1,5 @@
+import { adicionarAoCarrinho } from "./carrinho.js";
+
 export function criarCardProduto(produto) {
   const card = document.createElement("div");
   card.classList.add("card");
@@ -13,5 +15,12 @@ export function criarCardProduto(produto) {
       </div>
     </div>
   `;
+
+  card.querySelector('.add-to-cart').addEventListener('click', () => adicionarAoCarrinho(produto));
+  card.querySelector('.buy-now').addEventListener('click', () => {
+    adicionarAoCarrinho(produto);
+    window.location.href = 'carrinho.html';
+  });
+
   return card;
 }

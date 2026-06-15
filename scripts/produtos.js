@@ -2,7 +2,24 @@ import { api } from "./api.js";
 import { criarCardProduto } from "./utils.js";
 import { adicionarAoCarrinho } from "./carrinho.js";
 
-let todosOsProdutos = []; 
+let todosOsProdutos = [];
+const containerProdutos = document.querySelector(".produtos");
+
+function exibirProdutos(lista) {
+  if (!containerProdutos) return;
+  
+  containerProdutos.innerHTML = '';
+  
+  if (lista.length === 0) {
+    containerProdutos.innerHTML = '<p>Nenhum produto encontrado.</p>';
+    return;
+  }
+
+  lista.forEach((produto) => {
+    const card = criarCardProduto(produto);
+    containerProdutos.appendChild(card);
+  });
+}
 
 async function renderizarProdutosIniciais() {
   try {
@@ -13,56 +30,29 @@ async function renderizarProdutosIniciais() {
         produto.category === "women's clothing"
     );
 
-    const containerProdutos = document.querySelector(".produtos");
-    if (!containerProdutos) {
-      console.warn("Container de produtos não encontrado nesta página.");
-      return;
-    }
-
-    containerProdutos.innerHTML = '';
-
-    const quantidadeExibida = 8;
-    const produtosAleatorios = [...todosOsProdutos]
+    const iniciais = [...todosOsProdutos]
       .sort(() => Math.random() - 0.5)
-      .slice(0, quantidadeExibida);
+      .slice(0, 8);
 
-    produtosAleatorios.forEach((produto) => {
-      const card = criarCardProduto(produto);
-
-      card.querySelector('.add-to-cart').addEventListener('click', () => adicionarAoCarrinho(produto));
-      card.querySelector('.buy-now').addEventListener('click', () => {
-          adicionarAoCarrinho(produto);
-          window.location.href = 'carrinho.html';
-      });
-
-      containerProdutos.appendChild(card);
-    });
+    exibirProdutos(iniciais);
   } catch (error) {
     console.error("Erro ao renderizar produtos:", error);
   }
 }
 
 function filtrarProdutosPorCategoria(categoria) {
-  const cards = document.querySelectorAll(".card");
-  cards.forEach((card) => {
-    const produtoCategory = card.dataset.category;
+  if (categoria === "todos") {
+    exibirProdutos(todosOsProdutos);
+    return;
+  }
 
-    if (categoria === "todos") {
-      card.style.display = "block";
-    } else if (
-      categoria === "roupas-masculinas" &&
-      produtoCategory === "men's clothing"
-    ) {
-      card.style.display = "block";
-    } else if (
-      categoria === "roupas-femininas" &&
-      produtoCategory === "women's clothing"
-    ) {
-      card.style.display = "block";
-    } else {
-      card.style.display = "none";
-    }
-  });
+  const mapeamento = {
+    "roupas-masculinas": "men's clothing",
+    "roupas-femininas": "women's clothing"
+  };
+
+  const filtrados = todosOsProdutos.filter(p => p.category === mapeamento[categoria]);
+  exibirProdutos(filtrados);
 }
 
 document.addEventListener("DOMContentLoaded", () => {

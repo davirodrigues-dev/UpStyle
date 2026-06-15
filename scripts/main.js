@@ -5,7 +5,7 @@ import { adicionarAoCarrinho } from "./carrinho.js";
 async function renderizarProdutos() {
   try {
     const todosProdutos = await api();
-    
+
     const apenasRoupas = todosProdutos.filter(
       (produto) =>
         produto.category === "men's clothing" ||
@@ -24,13 +24,6 @@ async function renderizarProdutos() {
 
     produtosAleatorios.forEach(produto => {
       const card = criarCardProduto(produto);
-      
-      card.querySelector('.add-to-cart').addEventListener('click', () => adicionarAoCarrinho(produto));
-      card.querySelector('.buy-now').addEventListener('click', () => {
-          adicionarAoCarrinho(produto);
-          window.location.href = 'carrinho.html';
-      });
-
       containerProdutos.appendChild(card);
     });
   } catch (error) {

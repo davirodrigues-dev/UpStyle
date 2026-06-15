@@ -12,7 +12,7 @@ function removerDoCarrinho(index) {
   const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
   carrinho.splice(index, 1);
   localStorage.setItem("carrinho", JSON.stringify(carrinho));
-  
+
   renderizarCarrinho();
   atualizarContadorCarrinho();
 }
@@ -57,6 +57,15 @@ function renderizarCarrinho() {
       removerDoCarrinho(index);
     });
   });
+
+  const btnFinalizar = container.querySelector(".btn-finalizar");
+  if (btnFinalizar) {
+    btnFinalizar.addEventListener("click", () => {
+      alert("Compra realizada com sucesso! Obrigado por comprar na UpStyle.");
+      localStorage.removeItem("carrinho");
+      window.location.href = "index.html";
+    });
+  }
 }
 
 document.addEventListener("DOMContentLoaded", renderizarCarrinho);

@@ -6,8 +6,25 @@ export function atualizarContadorCarrinho() {
     });
 }
 
+export function gerenciarSessao() {
+    const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
+    const menuAuth = document.getElementById('menu-auth');
+
+    if (usuarioLogado && menuAuth) {
+        menuAuth.innerHTML = `
+            <span style="color: #7C3AED">Olá, ${usuarioLogado.nome.split(' ')[0]}</span>
+            <a href="#" id="logout" style="margin-left: 10px; font-size: 0.8em; color: #ff4d4d;">Sair</a>
+        `;
+        document.getElementById('logout').addEventListener('click', () => {
+            localStorage.removeItem('usuarioLogado');
+            window.location.reload();
+        });
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     atualizarContadorCarrinho();
+    gerenciarSessao();
 
     const header = document.querySelector('header');
     window.addEventListener('scroll', () => {
